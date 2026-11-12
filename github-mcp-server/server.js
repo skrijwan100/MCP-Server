@@ -2,11 +2,12 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { registerRepoTools } from "./src/tools/repo.tools.js";
 import { registerReadmeTools } from "./src/tools/readme.tools.js";
-
+import {registerPrTools} from "./src/tools/pr.tools.js"
 const server = new McpServer({ name: "github-mcp-server", version: "2.0.0" });
 
 registerRepoTools(server);
 registerReadmeTools(server);
+registerPrTools(server)
 
 const transport = new StdioServerTransport();
 await server.connect(transport);
